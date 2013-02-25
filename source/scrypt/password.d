@@ -18,5 +18,7 @@ string generateRandomSalt() {
 // TODO: Write docs
 string getEncodedPassword(string password, string salt) {
     // TODO: You'll know what to do
+    ubyte[] outpw;
+    size_t buflen = password.length + salt.length;
     return "";
 }
