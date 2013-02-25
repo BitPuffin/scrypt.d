@@ -1,10 +1,10 @@
 {
-	"name": "scrypt",
-	"description": "An example project skeleton",
-	"homepage": "http://example.org",
-	"copyright": "Copyright © 2000, Your Name",
+	"name": "scrypt.d",
+	"description": "A D library for using the scrypt encryption function",
+	"homepage": "http://github.com/BitPuffin/scrypt.d.git",
+	"copyright": "Copyright 2013 Isak Andersson (BitPuffin@lavabit.com)",
 	"authors": [
-		"Your Name"
+		"Isak Andersson"
 	],
 	"dependencies": {
 	}
