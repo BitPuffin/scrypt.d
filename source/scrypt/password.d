@@ -7,8 +7,6 @@ module scrypt.password;
  * See LICENSE.txt in project root for more info
  */
 
-import scrypt.scryptenc;
-
 // TODO: Write docs
 string generateRandomSalt() {
     // TODO: You'll know what to do
