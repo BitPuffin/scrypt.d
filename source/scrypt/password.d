@@ -7,6 +7,8 @@ module scrypt.password;
  * See LICENSE.txt in project root for more info
  */
 
+import scrypt.crypto_scrypt;
+
 // TODO: Write docs
 string generateRandomSalt() {
     // TODO: You'll know what to do
@@ -14,9 +16,14 @@ string generateRandomSalt() {
 }
 
 // TODO: Write docs
-string getEncodedPassword(string password, string salt) {
+string getScryptPassword(string password, string salt = generateRandomSalt(), size_t outputlen = 90, ulong N = 8, uint r = 8, uint p = 1) {
     // TODO: You'll know what to do
-    ubyte[] outpw;
-    size_t buflen = password.length + salt.length;
-    return "";
+    ubyte[] outpw = new ubyte[outputlen];
+    crypto_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
+    
+    return cast(string)outpw.idup;
+}
+
+unittest {
+    static assert(genScryptPassword("foo") != genScryptPassword("foo"));
 }

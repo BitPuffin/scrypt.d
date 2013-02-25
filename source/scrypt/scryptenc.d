@@ -30,6 +30,8 @@ module scrypt.scryptenc;
  * D Binding created by Isak Andersson 2013 (BitPuffin@lavabit.com)
  */
 
+pragma(lib, "tarsnap");
+
 import std.c.stdio;
 
 alias ubyte uint8_t;
