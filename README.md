@@ -23,7 +23,6 @@ password.d comes with 3 functions:
     string genRandomSalt();
     string genScryptPasswordHash(string password, string salt, size_t scrypt_outputlen, ulong N, uint r, uint p);
     string checkScryptPasswordHash(string hash, string password, size_t scrypt_outputlen, ulong N, uint r, uint p);
-
 ```
 
 Okay so password is obviously the parameter for the password you either wanna check or hash, salt is the random salt
@@ -49,7 +48,6 @@ checkScryptPasswordHash as they were when you where calling genScryptPasswordHas
 Now here is an example of using the password module for great win:
 
 ``` d
-
 import scrypt.password;
 
 // Some function for saving a password in to your database for example
@@ -61,8 +59,6 @@ db.save("foo", password);
 string password_hash = db.get("foo");
 bool authenticate = checkScryptPasswordHash(password_hash, input_password, SCRYPT_OUTPUTLEN_DEFAULT, SCRYPT_N_DEFAULT, SCRYPT_R_DEFAULT, SCRYPT_P_DEFAULT);
 // end
-
-
 ```
 
 Simple right? Now go store passwords securely! No insecure md5 or sha1 hashes, I'll smack you down!
