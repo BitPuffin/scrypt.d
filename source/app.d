@@ -2,7 +2,7 @@ import std.stdio;
 import scrypt.password;
 
 void main() {
-    writeln(getScryptPassword("hej"));
+    writeln(genScryptPassword("hej"));
     writeln("And again");
-    writeln(getScryptPassword("hej"));
+    writeln(genScryptPassword("hej"));
 }
