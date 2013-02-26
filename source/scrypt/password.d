@@ -9,6 +9,7 @@ module scrypt.password;
 
 import scrypt.crypto_scrypt;
 import std.algorithm : countUntil;
+import std.exception : enforce;
 
 enum SCRYPT_N_DEFAULT = 16384;
 enum SCRYPT_R_DEFAULT = 8;
@@ -32,7 +33,8 @@ string genScryptPassword(string password, string salt = generateRandomSalt(), si
 
 bool checkScryptPassword(string hash, string password, size_t outputlen = SCRYPT_OUTPUTLEN_DEFAULT, ulong N = SCRYPT_N_DEFAULT, uint r = SCRYPT_R_DEFAULT, uint p = SCRYPT_P_DEFAULT, immutable char salt_seperator = SCRYPT_SALT_SEPERATOR_DEFAULT) {
     long sep_index = countUntil(hash, salt_seperator);
-    return genScryptPassword(password, hash[0 .. countUntil(hash, salt_seperator)], outputlen, N, r, p, salt_seperator) == hash;
+    enforce(sep_index >= 0 && sep_index < hash.length, "could not find the seperator index");
+    return genScryptPassword(password, hash[0 .. sep_index], outputlen, N, r, p, salt_seperator) == hash;
 }
 
 unittest {
