@@ -27,7 +27,7 @@ module scrypt.scryptenc;
  * This file was originally written by Colin Percival as part of the Tarsnap
  * online backup system.
  * 
- * D Binding created by Isak Andersson 2013 (BitPuffin@lavabit.com)
+ * D binding created by Isak Andersson 2013 (BitPuffin@lavabit.com)
  */
 
 pragma(lib, "tarsnap");
