@@ -8,4 +8,6 @@ void main() {
     writeln(genScryptPassword("balls", "salt1"), "\n\n");
     writeln(genScryptPassword("balls", "salt2"), "\n\n");
     writeln(genScryptPassword("balls", "salt2"), "same salt gives same shit \n\n");
+
+    writeln("just trying params:\n", genScryptPassword("password", "", 300, 64, 16, 1, '$')); 
 }
