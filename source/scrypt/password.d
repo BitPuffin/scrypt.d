@@ -16,12 +16,17 @@ string generateRandomSalt() {
 }
 
 // TODO: Write docs
-string genScryptPassword(string password, string salt = generateRandomSalt(), size_t outputlen = 90, ulong N = 16384, uint r = 8, uint p = 1) {
+string genScryptPassword(string password, string salt, size_t outputlen = 90, ulong N = 16384, uint r = 8, uint p = 1) {
     ubyte[] outpw = new ubyte[outputlen];
     crypto_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
     
     return cast(string)outpw.idup;
 }
+
+string genScryptPasswordWithSalt(string password, string salt = generateRandomSalt(), size_t outputlen = 90, ulong N = 16384, uint r = 8, uint p = 1) {
+    return salt ~ "$" ~ genScryptPassword(password, salt, outputlen, N, r, p);
+}
+
 
 unittest {
     static assert(genScryptPassword("foo") != genScryptPassword("foo"));
