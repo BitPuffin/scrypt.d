@@ -38,5 +38,4 @@ bool checkScryptPassword(string hash, string password, size_t outputlen = SCRYPT
 }
 
 unittest {
-    static assert(genScryptPassword("foo") != genScryptPassword("foo"));
 }
