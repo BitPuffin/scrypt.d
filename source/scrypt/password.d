@@ -8,6 +8,13 @@ module scrypt.password;
  */
 
 import scrypt.crypto_scrypt;
+import std.algorithm : countUntil;
+
+enum SCRYPT_N_DEFAULT = 16384;
+enum SCRYPT_R_DEFAULT = 8;
+enum SCRYPT_P_DEFAULT = 1;
+enum SCRYPT_OUTPUTLEN_DEFAULT = 90;
+enum SCRYPT_SALT_SEPERATOR_DEFAULT = '$';
 
 // TODO: Write docs
 string generateRandomSalt() {
@@ -16,17 +23,17 @@ string generateRandomSalt() {
 }
 
 // TODO: Write docs
-string genScryptPassword(string password, string salt, size_t outputlen = 90, ulong N = 16384, uint r = 8, uint p = 1) {
+string genScryptPassword(string password, string salt = generateRandomSalt(), size_t outputlen = SCRYPT_OUTPUTLEN_DEFAULT, ulong N = SCRYPT_N_DEFAULT, uint r = SCRYPT_R_DEFAULT, uint p = SCRYPT_P_DEFAULT, immutable char salt_seperator = SCRYPT_SALT_SEPERATOR_DEFAULT) {
     ubyte[] outpw = new ubyte[outputlen];
     crypto_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
     
-    return cast(string)outpw.idup;
+    return salt ~ salt_seperator ~ cast(string)outpw.idup;
 }
 
-string genScryptPasswordWithSalt(string password, string salt = generateRandomSalt(), size_t outputlen = 90, ulong N = 16384, uint r = 8, uint p = 1) {
-    return salt ~ "$" ~ genScryptPassword(password, salt, outputlen, N, r, p);
+bool checkScryptPassword(string hash, string password, size_t outputlen = SCRYPT_OUTPUTLEN_DEFAULT, ulong N = SCRYPT_N_DEFAULT, uint r = SCRYPT_R_DEFAULT, uint p = SCRYPT_P_DEFAULT, immutable char salt_seperator = SCRYPT_SALT_SEPERATOR_DEFAULT) {
+    long sep_index = countUntil(hash, salt_seperator);
+    return genScryptPassword(password, hash[0 .. countUntil(hash, salt_seperator)], outputlen, N, r, p, salt_seperator) == hash;
 }
-
 
 unittest {
     static assert(genScryptPassword("foo") != genScryptPassword("foo"));

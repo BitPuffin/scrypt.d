@@ -2,7 +2,6 @@ import std.stdio;
 import scrypt.password;
 
 void main() {
-    writeln(genScryptPassword("hej"));
-    writeln("And again");
-    writeln(genScryptPassword("hej"));
+    auto pw = genScryptPassword("my password", "penis");
+    writeln(checkScryptPassword("my password", pw) ? "it matched!" : "wtf");
 }
