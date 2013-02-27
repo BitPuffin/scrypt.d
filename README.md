@@ -74,8 +74,8 @@ Build Instructions
 #### POSIX instructions (this means linux, freebsd etc)
 
 > The way I got this to run properly on my machine was to download and compile tarsnap (found at https://www.tarsnap.com/download.html)
-> I then grabbed the libtarsnap.a and put it where my compiler would find it e.g (/usr/local/lib) and after that it's done as both
-> scryptenc.d and crypto_scrypt.d call pragma(lib, ...) for you!
+> I then grabbed the libtarsnap.a and put it where my compiler would find it e.g (/usr/local/lib) and after that it's done as tarsnap is listed in
+> the package.json file as a dependency!
 
 #### Windows instructions
 
