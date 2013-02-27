@@ -20,9 +20,9 @@ Because you don't wanna deal with typecasting and other bullshit, I decided to m
 password.d comes with 3 functions:
 
 ``` d
-    string genRandomSalt();
-    string genScryptPasswordHash(string password, string salt, size_t scrypt_outputlen, ulong N, uint r, uint p);
-    string checkScryptPasswordHash(string hash, string password, size_t scrypt_outputlen, ulong N, uint r, uint p);
+string genRandomSalt();
+string genScryptPasswordHash(string password, string salt, size_t scrypt_outputlen, ulong N, uint r, uint p);
+string checkScryptPasswordHash(string hash, string password, size_t scrypt_outputlen, ulong N, uint r, uint p);
 ```
 
 Okay so password is obviously the parameter for the password you either wanna check or hash, salt is the random salt
