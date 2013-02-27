@@ -31,8 +31,6 @@ module scrypt.crypto_scrypt;
  * D binding created by Isak Andersson 2013 (BitPuffin@lavabit.com)
  */
 
-pragma(lib, "tarsnap");
-
 alias ubyte uint8_t;
 alias ulong uint64_t;
 alias uint uint32_t;
