@@ -61,7 +61,7 @@ bool authenticate = checkScryptPasswordHash(password_hash, input_password, SCRYP
 // end
 ```
 
-Simple right? Now go store passwords securely! No insecure md5 or sha1 hashes, I'll smack you down!
+Simple right? Yes it's a bit wordy, but I'm giving YOU full control here remember? Now go store passwords securely! No insecure md5 or sha1 hashes, I'll smack you down!
 
 Dependencies
 ------------
