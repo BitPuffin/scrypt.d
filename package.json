@@ -8,5 +8,8 @@
 		"Isak Andersson"
 	],
 	"dependencies": {
-	}
+	},
+    "version": "~master",
+    "libs-posix": ["tarsnap"],
+    "dflags": " -O "
 }
