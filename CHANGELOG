@@ -1,0 +1,11 @@
+0.1.0
+
+PLANNED: remove the sha1 digest of the password hash.
+PLANNED: also return work factors in the string.
+
+0.0.9
+
+Works! But don't use this version
+It makes a sha1 digest which opens up the possibility
+that there will be hash collisions. Also it doesn't
+return the work factor which you should store.
