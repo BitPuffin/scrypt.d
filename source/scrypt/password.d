@@ -48,10 +48,6 @@ string genScryptPasswordHash(string password, string salt, size_t scrypt_outputl
   * Some info regarding the params
   * hash: An already hashed version of your password, for example fetched from a database
   * password: The password you wish to see if it matches
-  * scrypt_outputlen: the value you used for scrypt_outputlen in genScryptPasswordHash
-  * N: General work factor used in genScryptPasswordHash
-  * r: Blocksize used in genScryptPasswordHash
-  * p: Parallelization factor used in genScryptPasswordHash
   */
 bool checkScryptPasswordHash(string hash, string password) {
     auto params = hash.splitter(TERMINATOR).array[1 .. $];
