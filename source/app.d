@@ -15,7 +15,7 @@ void main() {
         writeln(checkScryptPasswordHash(pw, "very password nice really, random kind the you use should really"));
     }
 
-    writeln("\nRunning huuuge test, stay put!\n");
+    // writeln("\nRunning huuuge test, stay put!\n");
     // runTest(); // Weird test
 }
 
