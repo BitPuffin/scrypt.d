@@ -1,7 +1,7 @@
 0.1.0
 
-PLANNED: remove the sha1 digest of the password hash.
-PLANNED: also return work factors in the string.
++ Remove the sha1 digest of the password hash.
++ Store work factors in the hash string.
 
 0.0.9
 
