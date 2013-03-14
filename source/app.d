@@ -21,7 +21,7 @@ void main() {
 
 /// Testing stuff
 
-/// Epic test on storing a bunch of users, not sure why I did this
+/// Epic test on storing a bunch of users, not sure why I did this.
 void runTest() {
     int usercount = 1000;
 
