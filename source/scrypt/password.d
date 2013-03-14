@@ -12,12 +12,15 @@ import std.string : indexOf;
 import std.exception : enforce;
 import std.digest.digest : toHexString;
 import std.uuid : randomUUID;
+import std.algorithm : splitter;
+import std.array: array;
+import std.conv: to;
 
 enum SCRYPT_N_DEFAULT = 16384;
 enum SCRYPT_R_DEFAULT = 8;
 enum SCRYPT_P_DEFAULT = 1;
 enum SCRYPT_OUTPUTLEN_DEFAULT = 90;
-enum SCRYPT_SALT_SEPERATOR = '$';
+private enum TERMINATOR = '$'; 
 
 /// Takes no parameters, returns a random UUID in string form
 string genRandomSalt() {
@@ -38,7 +41,7 @@ string genScryptPasswordHash(string password, string salt, size_t scrypt_outputl
     ubyte[] outpw = new ubyte[scrypt_outputlen];
     crypto_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
     
-    return salt ~ SCRYPT_SALT_SEPERATOR ~ toHexString(outpw).idup;
+    return toHexString(outpw).idup ~ TERMINATOR ~ salt ~ TERMINATOR ~ to!string(scrypt_outputlen) ~ TERMINATOR ~ to!string(N) ~ TERMINATOR ~ to!string(r) ~ TERMINATOR ~ to!string(p);
 }
 
 /**
@@ -50,9 +53,9 @@ string genScryptPasswordHash(string password, string salt, size_t scrypt_outputl
   * r: Blocksize used in genScryptPasswordHash
   * p: Parallelization factor used in genScryptPasswordHash
   */
-bool checkScryptPasswordHash(string hash, string password, size_t scrypt_outputlen, ulong N, uint r, uint p) {
-    long sep_index = indexOf(hash, SCRYPT_SALT_SEPERATOR);
-    enforce(sep_index >= 0, "could not find the seperator index");
-    return genScryptPasswordHash(password, hash[0 .. sep_index], scrypt_outputlen, N, r, p) == hash;
+bool checkScryptPasswordHash(string hash, string password) {
+    auto params = hash.splitter(TERMINATOR).array[1 .. $];
+    enforce(params.length == 5, "invalid hash string, does not meet requirements");
+    return genScryptPasswordHash(password, params[0], to!size_t(params[1]), to!ulong(params[2]), to!uint(params[3]), to!uint(params[4])) == hash;
 }
 
