@@ -22,7 +22,7 @@ password.d comes with 3 functions:
 ``` d
 string genRandomSalt();
 string genScryptPasswordHash(string password, string salt, size_t scrypt_outputlen, ulong N, uint r, uint p);
-string checkScryptPasswordHash(string hash, string password, size_t scrypt_outputlen, ulong N, uint r, uint p);
+bool checkScryptPasswordHash(string hash, string password);
 ```
 
 Okay so password is obviously the parameter for the password you either wanna check or hash, salt is the random salt
@@ -57,7 +57,7 @@ db.save("foo", password);
 
 // Some function pulling out the data from the db to check if the password matches the one you saved earlier
 string password_hash = db.get("foo");
-bool authenticate = checkScryptPasswordHash(password_hash, input_password, SCRYPT_OUTPUTLEN_DEFAULT, SCRYPT_N_DEFAULT, SCRYPT_R_DEFAULT, SCRYPT_P_DEFAULT);
+bool authenticate = checkScryptPasswordHash(password_hash, input_password);
 // end
 ```
 
