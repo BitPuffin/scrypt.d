@@ -10,7 +10,6 @@ module scrypt.password;
 import scrypt.crypto_scrypt;
 import std.string : indexOf;
 import std.exception : enforce;
-import std.digest.sha : sha1Of;
 import std.digest.digest : toHexString;
 import std.uuid : randomUUID;
 
@@ -39,7 +38,7 @@ string genScryptPasswordHash(string password, string salt, size_t scrypt_outputl
     ubyte[] outpw = new ubyte[scrypt_outputlen];
     crypto_scrypt(cast(ubyte*)password.ptr, password.length, cast(ubyte*)salt.ptr, salt.length, N, r, p, outpw.ptr, outpw.length);
     
-    return salt ~ SCRYPT_SALT_SEPERATOR ~ toHexString(sha1Of(outpw)).idup;
+    return salt ~ SCRYPT_SALT_SEPERATOR ~ toHexString(outpw).idup;
 }
 
 /**
