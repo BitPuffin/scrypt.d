@@ -42,9 +42,6 @@ r is the blocksize used for the hash. Currently 8 seems to be fine (or SCRYPT_R_
 
 and p is the parallelization factor, 1 is currently a nice default. (or SCRYPT_P_DEFAULT)
 
-All of the confusing params (scrypt_outputlen, N, r and p) *must* and I repeat __MUST__ be the same when you are calling
-checkScryptPasswordHash as they were when you where calling genScryptPasswordHash, othewise they simply won't be tha same hashes.
-
 Now here is an example of using the password module for great win:
 
 ``` d
