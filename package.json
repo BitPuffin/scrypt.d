@@ -1,12 +1,12 @@
 {
-	"name": "scrypt-d",
-	"description": "A D library for using the scrypt encryption function",
-	"homepage": "http://github.com/BitPuffin/scrypt.d.git",
-	"copyright": "Copyright 2013 Isak Andersson (BitPuffin@lavabit.com)",
+    "name": "scrypt-d",
+    "description": "A D library for using the scrypt encryption function",
+    "homepage": "http://github.com/BitPuffin/scrypt.d.git",
+    "copyright": "Copyright 2013 Isak Andersson (BitPuffin@lavabit.com)",
     "license": "Zlib",
-	"authors": [
-		"Isak Andersson"
-	],
+    "authors": [
+        "Isak Andersson"
+    ],
     "libs-posix": ["tarsnap"],
-    "dflags": ["-O"]
+    "buildRequirements": ["relaxProperties"]
 }
