@@ -8,5 +8,4 @@
         "Isak Andersson"
     ],
     "libs-posix": ["tarsnap"],
-    "buildRequirements": ["relaxProperties"]
 }
