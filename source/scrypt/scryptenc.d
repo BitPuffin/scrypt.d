@@ -30,7 +30,7 @@ module scrypt.scryptenc;
  * D binding created by Isak Andersson 2013 (BitPuffin@lavabit.com)
  */
 
-import std.c.stdio;
+import core.stdc.stdio;
 
 alias ubyte uint8_t;
 
