@@ -77,13 +77,3 @@ Build Instructions
 #### Windows instructions
 
 > Someone else will have to write this as windows ain't worth my time. Should be similar to POSIX
-
-Misc
-----
-
-Want to show your appreciation for Scrypt.d? Send your bitcoin tip to:
-
-```
-1GGUQUtHcYvnUxKrCGkwviBixZDAeQkvqj
-```
-Cheers!
