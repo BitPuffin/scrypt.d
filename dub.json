@@ -7,5 +7,5 @@
     "authors": [
         "Isak Andersson"
     ],
-    "libs-posix": ["tarsnap"],
+    "libs-posix": ["tarsnap"]
 }
